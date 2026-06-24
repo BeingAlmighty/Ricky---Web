@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { MotionPathPlugin } from 'gsap/MotionPathPlugin';
-import { Building2, Users, Leaf, Target, Globe, Heart, Shield, Zap, ChevronRight, Smartphone } from 'lucide-react'
+
 import MagneticButton from '../components/MagneticButton'
 import { PlayStoreIcon, AppleIcon } from '../components/Icons';
 
@@ -21,7 +21,7 @@ export default function AboutUs() {
   
   const signaturePauseText = useRef(null);
   const rickyVehicle = useRef(null);
-  const completedRoutePath = useRef(null);
+
   
   const solutionTextContainer = useRef(null);
   

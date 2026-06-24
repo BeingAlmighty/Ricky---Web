@@ -1,12 +1,11 @@
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
-import { TrainFront, MapPin, Navigation } from 'lucide-react'
+import { TrainFront, MapPin } from 'lucide-react'
 
 export default function MapAnimation() {
   const sectionRef = useRef(null)
   const pathRef = useRef(null)
   const vehicleRef = useRef(null)
-  const stopsRef = useRef([])
 
   useEffect(() => {
     if (!pathRef.current || !vehicleRef.current) return
@@ -37,18 +36,10 @@ export default function MapAnimation() {
 
     }, sectionRef)
 
-    const updateVehiclePosition = () => {
-      const progress = 1 - (path.style.strokeDashoffset.replace('px', '') / length)
-    }
 
     return () => ctx.revert()
   }, [])
 
-  const addToStops = (el) => {
-    if (el && !stopsRef.current.includes(el)) {
-      stopsRef.current.push(el)
-    }
-  }
 
   return (
     <section ref={sectionRef} className="py-32 bg-white relative overflow-hidden">

@@ -54,7 +54,7 @@ export default function Hero() {
   return (
     <section 
       ref={containerRef}
-      className="relative w-full h-screen bg-[#FAFAFA] flex items-center pt-24 pb-16 overflow-hidden"
+      className="relative w-full min-h-[100svh] md:min-h-screen bg-[#FAFAFA] flex items-center pt-24 pb-16 overflow-hidden"
     >
       <div className="absolute inset-0 z-0 pointer-events-none">
         <img 

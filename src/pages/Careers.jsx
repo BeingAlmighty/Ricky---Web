@@ -4,8 +4,7 @@ import gsap from 'gsap';
 
 export default function Careers() {
   const containerRef = useRef(null);
-  const headlineRef = useRef(null);
-  const subRef = useRef(null);
+
   const cardRef = useRef(null);
   const routeRef = useRef(null);
   const vehicleRef = useRef(null);
@@ -52,9 +51,9 @@ export default function Careers() {
   ];
 
   return (
-    <div ref={containerRef} className="relative w-full h-screen overflow-hidden bg-gradient-to-b from-[#FAFAFA] to-[#F9F5FF] pt-[80px] lg:pt-[100px] flex flex-col items-center justify-center text-[#111111]">
+    <div ref={containerRef} className="relative w-full min-h-screen overflow-y-auto overflow-x-hidden bg-gradient-to-b from-[#FAFAFA] to-[#F9F5FF] pt-[120px] pb-12 lg:pt-[100px] lg:pb-0 flex flex-col items-center justify-start lg:justify-center text-[#111111]">
       
-      <div className="max-w-7xl w-full px-6 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center z-10">
+      <div className="max-w-7xl w-full px-6 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center z-10 my-auto lg:my-0">
         
         <div className="flex flex-col text-center lg:text-left">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-sora font-bold tracking-tight leading-[1.1] mb-6">

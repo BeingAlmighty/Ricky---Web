@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
 
 export default function AppShowcase() {
   const containerRef = useRef(null)
@@ -70,35 +70,35 @@ export default function AppShowcase() {
 
   return (
     <div>
-      <section ref={containerRef} className="h-screen bg-dark text-white relative flex flex-col justify-center overflow-hidden pt-12">
+      <section ref={containerRef} className="h-[100svh] lg:h-screen bg-dark text-white relative flex flex-col justify-start lg:justify-center overflow-hidden pt-20 lg:pt-12 pb-6 lg:pb-0">
         <div className="max-w-7xl mx-auto px-6 md:px-12 w-full">
         
-        <div className="text-center mb-8 md:mb-16 max-w-2xl mx-auto">
+        <div className="text-center mb-6 lg:mb-16 max-w-2xl mx-auto">
           <h2 className="text-3xl md:text-5xl font-semibold mb-2 md:mb-4 tracking-tight">How Ricky Works</h2>
-          <p className="text-text-secondary text-lg font-inter">
+          <p className="text-text-secondary text-sm sm:text-base md:text-lg font-inter">
             A seamless experience designed to get you moving instantly.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 relative items-center">
+        <div className="grid lg:grid-cols-2 gap-6 lg:gap-12 relative items-center">
           
-          <div className="relative h-[280px] md:h-[320px] w-full max-w-md mx-auto lg:mx-0 lg:-translate-y-12">
+          <div className="relative h-[220px] sm:h-[260px] md:h-[320px] w-full max-w-md mx-auto lg:mx-0 lg:-translate-y-12">
             {screens.map((screen, idx) => (
               <div 
                 key={idx} 
                 className="app-card absolute top-0 left-0 w-full"
                 style={{ zIndex: idx }}
               >
-                <div className="bg-[#18181B] p-8 md:p-10 rounded-3xl border border-white/10 shadow-[0_-10px_30px_rgba(0,0,0,0.6)] h-full flex flex-col justify-center transition-shadow">
-                  <span className="text-primary font-bold text-sm tracking-widest uppercase mb-3 block">Step {idx + 1}</span>
-                  <h3 className="text-2xl md:text-3xl font-semibold mb-4 font-sora">{screen.title}</h3>
-                  <p className="text-gray-400 font-inter text-base leading-relaxed">{screen.desc}</p>
+                <div className="bg-[#18181B] p-6 md:p-10 rounded-[1.5rem] md:rounded-3xl border border-white/10 shadow-[0_-10px_30px_rgba(0,0,0,0.6)] h-full flex flex-col justify-center transition-shadow">
+                  <span className="text-primary font-bold text-xs md:text-sm tracking-widest uppercase mb-2 md:mb-3 block">Step {idx + 1}</span>
+                  <h3 className="text-lg sm:text-xl md:text-3xl font-semibold mb-2 md:mb-4 font-sora leading-tight">{screen.title}</h3>
+                  <p className="text-gray-400 font-inter text-xs sm:text-sm md:text-base leading-relaxed line-clamp-3 md:line-clamp-none">{screen.desc}</p>
                 </div>
               </div>
             ))}
           </div>
 
-          <div className="flex h-[50vh] md:h-[65vh] items-center justify-center w-full max-w-[240px] md:max-w-[280px] mx-auto relative z-20 mt-4 md:mt-0">
+          <div className="flex h-[35vh] sm:h-[45vh] md:h-[65vh] items-center justify-center w-full max-w-[180px] sm:max-w-[220px] md:max-w-[280px] mx-auto relative z-20 mt-2 lg:mt-0">
             <div className="relative w-full aspect-[1/2.05] bg-gradient-to-br from-[#2E1A47] to-[#0F0F14] rounded-[36px] md:rounded-[40px] border-[8px] border-[#18181B] shadow-[0_0_80px_rgba(124,58,237,0.15)] premium-shadow overflow-hidden">
               
               <div className="relative w-full h-full bg-black">

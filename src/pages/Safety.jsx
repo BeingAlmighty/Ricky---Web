@@ -2,8 +2,9 @@ import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Shield, ChevronRight, CheckCircle2, Navigation, MapPin, Search, FileCheck, UserCheck, Car, ShieldCheck, Share2, PhoneCall, History, Lock } from 'lucide-react';
+import { Shield, CheckCircle2, Navigation, MapPin, Search, FileCheck, UserCheck, Car, ShieldCheck, Share2, PhoneCall, History, Lock } from 'lucide-react';
 import MagneticButton from '../components/MagneticButton';
+import CoverflowCarousel from '../components/CoverflowCarousel';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -46,6 +47,90 @@ export default function Safety() {
   const protectiveRing = useRef(null);
   const ctaContainer = useRef(null);
 
+  const safetyCards = [
+    {
+      id: 1,
+      title: "Live Trip Sharing",
+      desc: "Broadcast your encrypted live route and telemetry instantly.",
+      icon: Share2,
+      bgClass: "bg-[#0F0F14]",
+      borderClass: "border-white/5",
+      titleClass: "text-white",
+      descClass: "text-white/60",
+      iconWrapperClass: "bg-white/5 border border-white/10 text-white backdrop-blur-md group-hover:rotate-12 transition-transform duration-500",
+      iconClass: "",
+      effects: () => (
+        <>
+          <div className="absolute -top-16 -right-16 w-48 h-48 bg-[#7C3AED] rounded-full mix-blend-screen filter blur-[60px] opacity-20 group-hover:opacity-40 transition-opacity duration-700"></div>
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_10%,transparent_100%)] opacity-50"></div>
+        </>
+      )
+    },
+    {
+      id: 2,
+      title: "Verified Identity",
+      desc: "Match the captain's biometrics and vehicle before stepping inside.",
+      icon: UserCheck,
+      bgClass: "bg-white",
+      borderClass: "border-black/5",
+      titleClass: "text-[#111111]",
+      descClass: "text-[#6A6A73]",
+      iconWrapperClass: "bg-[#FAFAFA] border border-black/5 text-[#111111] group-hover:-rotate-12 transition-transform duration-500",
+      iconClass: "",
+      effects: () => (
+        <div className="absolute inset-0 bg-gradient-to-br from-[#F9F5FF]/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+      )
+    },
+    {
+      id: 3,
+      title: "24/7 Rapid Response",
+      desc: "Priority access to our dedicated safety team and local services.",
+      icon: PhoneCall,
+      bgClass: "bg-white",
+      borderClass: "border-black/5",
+      titleClass: "text-[#111111]",
+      descClass: "text-[#6A6A73]",
+      iconWrapperClass: "bg-red-50/50 border border-red-100/50 text-red-500 group-hover:scale-110 transition-transform duration-500",
+      iconClass: "",
+      effects: () => (
+        <div className="absolute -bottom-16 -left-16 w-48 h-48 bg-red-500 rounded-full filter blur-[60px] opacity-[0.03] group-hover:opacity-[0.08] transition-opacity duration-700"></div>
+      )
+    },
+    {
+      id: 4,
+      title: "Immutable Records",
+      desc: "Every journey is securely logged and accessible in your history.",
+      icon: History,
+      bgClass: "bg-gradient-to-br from-[#F9F5FF] to-[#F3E8FF]",
+      borderClass: "border-primary/10",
+      titleClass: "text-[#111111]",
+      descClass: "text-primary/70",
+      iconWrapperClass: "bg-white/60 backdrop-blur-sm border border-white text-primary shadow-[0px_5px_15px_rgba(91,33,182,0.05)] group-hover:rotate-12 transition-transform duration-500",
+      iconClass: "",
+      effects: () => (
+        <div className="absolute top-0 right-0 w-[200%] h-[200%] -translate-y-1/2 translate-x-1/3 bg-[radial-gradient(circle,rgba(91,33,182,0.04)_0%,transparent_60%)]"></div>
+      )
+    },
+    {
+      id: 5,
+      title: "Privacy by Design",
+      desc: "Your location data is end-to-end encrypted during the trip and automatically wiped from our active servers after every ride. We never sell your data.",
+      icon: Lock,
+      bgClass: "bg-[#FAFAFA]",
+      borderClass: "border-black/5",
+      titleClass: "text-[#111111]",
+      descClass: "text-[#6A6A73]",
+      iconWrapperClass: "bg-white border border-black/5 text-[#111111] shadow-sm group-hover:rotate-[360deg] transition-transform duration-700",
+      iconClass: "",
+      badge: () => (
+        <div className="flex shrink-0 items-center justify-center px-4 py-2 bg-[#00C853]/10 rounded-full border border-[#00C853]/20 text-[#00C853] gap-2 absolute top-6 right-6">
+           <div className="w-2 h-2 rounded-full bg-[#00C853] animate-pulse"></div>
+           <span className="font-inter text-xs font-bold uppercase tracking-wider">Encrypted</span>
+        </div>
+      )
+    }
+  ];
+
   useEffect(() => {
     let ctx = gsap.context(() => {
       
@@ -71,7 +156,7 @@ export default function Safety() {
 
 
       const steps = [stepApp, stepDoc, stepId, stepVeh, stepAppr];
-      steps.forEach((step, idx) => {
+      steps.forEach((step) => {
         tl.to(step.current, { color: '#5B21B6', duration: 0.5 })
           .to(step.current.querySelector('.lucide'), { stroke: '#5B21B6', scale: 1.1, duration: 0.5 }, "<")
           .to({}, { duration: 0.3 });
@@ -120,7 +205,8 @@ export default function Safety() {
         .to(s3HumanText.current, { opacity: 0, y: -30, duration: 1.5 })
 
       tl.fromTo(s3Headline.current, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1 })
-        .fromTo(s3Features.current.children, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1, stagger: 0.3 }, "<0.5")
+        .fromTo('.s3-desktop-card', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1, stagger: 0.3 }, "<0.5")
+        .fromTo('.s3-mobile-carousel', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1 }, "<")
         .to({}, { duration: 2 })
       
       tl.to([s3Headline.current, s3Features.current], { opacity: 0, y: -30, duration: 1.5 })
@@ -334,7 +420,7 @@ export default function Safety() {
             </div>
           </div>
 
-          <div className="absolute inset-0 z-30 flex flex-col items-center justify-start pointer-events-none px-6 md:pl-28 lg:px-6 pt-12 md:pt-[100px] pb-4">
+          <div className="absolute inset-0 z-30 flex flex-col items-center justify-start pointer-events-none px-6 md:pl-28 lg:px-6 pt-[120px] md:pt-[100px] pb-4">
             
             <div className="absolute inset-0 flex items-center justify-center">
               <h2 ref={s3HumanText} className="text-2xl md:text-4xl lg:text-5xl font-sora font-semibold text-center opacity-0 max-w-4xl tracking-tight leading-[1.1]">
@@ -348,91 +434,98 @@ export default function Safety() {
               </h2>
             </div>
 
-            <div className="max-w-4xl mx-auto w-full">
+            <div className="max-w-4xl mx-auto w-full pointer-events-auto">
               
-              <div ref={s3Features} className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+              <div ref={s3Features} className="w-full">
                 
-                <div className="opacity-0 relative overflow-hidden bg-[#0F0F14] p-5 md:p-8 rounded-[1.5rem] md:rounded-[2rem] border border-white/5 shadow-2xl group flex flex-row items-center gap-4 md:gap-6">
-                  <div className="absolute -top-16 -right-16 w-48 h-48 bg-[#7C3AED] rounded-full mix-blend-screen filter blur-[60px] opacity-20 group-hover:opacity-40 transition-opacity duration-700"></div>
-                  <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_10%,transparent_100%)] opacity-50"></div>
+                <div className="hidden lg:grid grid-cols-2 gap-6 w-full">
                   
-                  <div className="relative z-10 shrink-0">
-                    <div className="w-12 h-12 md:w-14 md:h-14 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center text-white backdrop-blur-md group-hover:rotate-12 transition-transform duration-500">
-                      <Share2 size={22} />
+                  <div className="s3-desktop-card opacity-0 relative overflow-hidden bg-[#0F0F14] p-8 rounded-[2rem] border border-white/5 shadow-2xl group flex flex-row items-center gap-6">
+                    <div className="absolute -top-16 -right-16 w-48 h-48 bg-[#7C3AED] rounded-full mix-blend-screen filter blur-[60px] opacity-20 group-hover:opacity-40 transition-opacity duration-700"></div>
+                    <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_10%,transparent_100%)] opacity-50"></div>
+                    
+                    <div className="relative z-10 shrink-0">
+                      <div className="w-14 h-14 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center text-white backdrop-blur-md group-hover:rotate-12 transition-transform duration-500">
+                        <Share2 size={22} />
+                      </div>
+                    </div>
+                    <div className="relative z-10 flex flex-col text-left">
+                      <h3 className="font-sora font-semibold text-xl text-white mb-1.5 tracking-tight">Live Trip Sharing</h3>
+                      <p className="text-white/60 font-inter leading-relaxed text-sm">Broadcast your encrypted live route and telemetry instantly.</p>
                     </div>
                   </div>
-                  <div className="relative z-10 flex flex-col text-left">
-                    <h3 className="font-sora font-semibold text-lg md:text-xl text-white mb-1.5 tracking-tight">Live Trip Sharing</h3>
-                    <p className="text-white/60 font-inter leading-relaxed text-xs md:text-sm">Broadcast your encrypted live route and telemetry instantly.</p>
+
+                  <div className="s3-desktop-card opacity-0 relative overflow-hidden bg-white p-8 rounded-[2rem] border border-black/5 shadow-[0px_10px_30px_rgba(0,0,0,0.03)] group flex flex-row items-center gap-6">
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#F9F5FF]/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                    
+                    <div className="relative z-10 shrink-0">
+                      <div className="w-14 h-14 bg-[#FAFAFA] border border-black/5 rounded-2xl flex items-center justify-center text-[#111111] group-hover:-rotate-12 transition-transform duration-500">
+                        <UserCheck size={22} />
+                      </div>
+                    </div>
+                    <div className="relative z-10 flex flex-col text-left">
+                      <h3 className="font-sora font-semibold text-xl text-[#111111] mb-1.5 tracking-tight">Verified Identity</h3>
+                      <p className="text-[#6A6A73] font-inter leading-relaxed text-sm">Match the captain's biometrics and vehicle before stepping inside.</p>
+                    </div>
                   </div>
+
+                  <div className="s3-desktop-card opacity-0 relative overflow-hidden bg-white p-8 rounded-[2rem] border border-black/5 shadow-[0px_10px_30px_rgba(0,0,0,0.03)] group flex flex-row items-center gap-6">
+                    <div className="absolute -bottom-16 -left-16 w-48 h-48 bg-red-500 rounded-full filter blur-[60px] opacity-[0.03] group-hover:opacity-[0.08] transition-opacity duration-700"></div>
+                    
+                    <div className="relative z-10 shrink-0">
+                      <div className="w-14 h-14 bg-red-50/50 border border-red-100/50 rounded-2xl flex items-center justify-center text-red-500 group-hover:scale-110 transition-transform duration-500">
+                        <PhoneCall size={22} />
+                      </div>
+                    </div>
+                    <div className="relative z-10 flex flex-col text-left">
+                      <h3 className="font-sora font-semibold text-xl text-[#111111] mb-1.5 tracking-tight">24/7 Rapid Response</h3>
+                      <p className="text-[#6A6A73] font-inter leading-relaxed text-sm">Priority access to our dedicated safety team and local services.</p>
+                    </div>
+                  </div>
+
+                  <div className="s3-desktop-card opacity-0 relative overflow-hidden bg-gradient-to-br from-[#F9F5FF] to-[#F3E8FF] p-8 rounded-[2rem] border border-primary/10 group flex flex-row items-center gap-6">
+                    <div className="absolute top-0 right-0 w-[200%] h-[200%] -translate-y-1/2 translate-x-1/3 bg-[radial-gradient(circle,rgba(91,33,182,0.04)_0%,transparent_60%)]"></div>
+                    
+                    <div className="relative z-10 shrink-0">
+                      <div className="w-14 h-14 bg-white/60 backdrop-blur-sm border border-white rounded-2xl flex items-center justify-center text-primary shadow-[0px_5px_15px_rgba(91,33,182,0.05)] group-hover:rotate-12 transition-transform duration-500">
+                        <History size={22} />
+                      </div>
+                    </div>
+                    <div className="relative z-10 flex flex-col text-left">
+                      <h3 className="font-sora font-semibold text-xl text-[#111111] mb-1.5 tracking-tight">Immutable Records</h3>
+                      <p className="text-primary/70 font-inter leading-relaxed text-sm">Every journey is securely logged and accessible in your history.</p>
+                    </div>
+                  </div>
+
+                  <div className="s3-desktop-card opacity-0 col-span-2 relative overflow-hidden bg-[#FAFAFA] p-6 rounded-[2rem] border border-black/5 shadow-inner group flex flex-row items-center gap-6">
+                    
+                    <div className="relative z-10 shrink-0">
+                      <div className="w-14 h-14 bg-white border border-black/5 rounded-2xl flex items-center justify-center text-[#111111] shadow-sm group-hover:rotate-[360deg] transition-transform duration-700">
+                        <Lock size={22} />
+                      </div>
+                    </div>
+                    <div className="relative z-10 flex flex-col text-left flex-1">
+                      <h3 className="font-sora font-semibold text-xl text-[#111111] mb-1 tracking-tight">Privacy by Design</h3>
+                      <p className="text-[#6A6A73] font-inter leading-relaxed text-sm max-w-2xl">Your location data is end-to-end encrypted during the trip and automatically wiped from our active servers after every ride. We never sell your data.</p>
+                    </div>
+
+                    <div className="flex shrink-0 items-center justify-center px-4 py-2 bg-[#00C853]/10 rounded-full border border-[#00C853]/20 text-[#00C853] gap-2">
+                       <div className="w-2 h-2 rounded-full bg-[#00C853] animate-pulse"></div>
+                       <span className="font-inter text-xs font-bold uppercase tracking-wider">End-to-End Encrypted</span>
+                    </div>
+                  </div>
+
                 </div>
 
-                <div className="opacity-0 relative overflow-hidden bg-white p-5 md:p-8 rounded-[1.5rem] md:rounded-[2rem] border border-black/5 shadow-[0px_10px_30px_rgba(0,0,0,0.03)] group flex flex-row items-center gap-4 md:gap-6">
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#F9F5FF]/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-                  
-                  <div className="relative z-10 shrink-0">
-                    <div className="w-12 h-12 md:w-14 md:h-14 bg-[#FAFAFA] border border-black/5 rounded-2xl flex items-center justify-center text-[#111111] group-hover:-rotate-12 transition-transform duration-500">
-                      <UserCheck size={22} />
-                    </div>
-                  </div>
-                  <div className="relative z-10 flex flex-col text-left">
-                    <h3 className="font-sora font-semibold text-lg md:text-xl text-[#111111] mb-1.5 tracking-tight">Verified Identity</h3>
-                    <p className="text-[#6A6A73] font-inter leading-relaxed text-xs md:text-sm">Match the captain's biometrics and vehicle before stepping inside.</p>
-                  </div>
-                </div>
-
-                <div className="opacity-0 relative overflow-hidden bg-white p-5 md:p-8 rounded-[1.5rem] md:rounded-[2rem] border border-black/5 shadow-[0px_10px_30px_rgba(0,0,0,0.03)] group flex flex-row items-center gap-4 md:gap-6">
-                  <div className="absolute -bottom-16 -left-16 w-48 h-48 bg-red-500 rounded-full filter blur-[60px] opacity-[0.03] group-hover:opacity-[0.08] transition-opacity duration-700"></div>
-                  
-                  <div className="relative z-10 shrink-0">
-                    <div className="w-12 h-12 md:w-14 md:h-14 bg-red-50/50 border border-red-100/50 rounded-2xl flex items-center justify-center text-red-500 group-hover:scale-110 transition-transform duration-500">
-                      <PhoneCall size={22} />
-                    </div>
-                  </div>
-                  <div className="relative z-10 flex flex-col text-left">
-                    <h3 className="font-sora font-semibold text-lg md:text-xl text-[#111111] mb-1.5 tracking-tight">24/7 Rapid Response</h3>
-                    <p className="text-[#6A6A73] font-inter leading-relaxed text-xs md:text-sm">Priority access to our dedicated safety team and local services.</p>
-                  </div>
-                </div>
-
-                <div className="opacity-0 relative overflow-hidden bg-gradient-to-br from-[#F9F5FF] to-[#F3E8FF] p-5 md:p-8 rounded-[1.5rem] md:rounded-[2rem] border border-primary/10 group flex flex-row items-center gap-4 md:gap-6">
-                  <div className="absolute top-0 right-0 w-[200%] h-[200%] -translate-y-1/2 translate-x-1/3 bg-[radial-gradient(circle,rgba(91,33,182,0.04)_0%,transparent_60%)]"></div>
-                  
-                  <div className="relative z-10 shrink-0">
-                    <div className="w-12 h-12 md:w-14 md:h-14 bg-white/60 backdrop-blur-sm border border-white rounded-2xl flex items-center justify-center text-primary shadow-[0px_5px_15px_rgba(91,33,182,0.05)] group-hover:rotate-12 transition-transform duration-500">
-                      <History size={22} />
-                    </div>
-                  </div>
-                  <div className="relative z-10 flex flex-col text-left">
-                    <h3 className="font-sora font-semibold text-lg md:text-xl text-[#111111] mb-1.5 tracking-tight">Immutable Records</h3>
-                    <p className="text-primary/70 font-inter leading-relaxed text-xs md:text-sm">Every journey is securely logged and accessible in your history.</p>
-                  </div>
-                </div>
-
-                <div className="opacity-0 md:col-span-2 relative overflow-hidden bg-[#FAFAFA] p-5 md:p-6 rounded-[1.5rem] md:rounded-[2rem] border border-black/5 shadow-inner group flex flex-row items-center gap-4 md:gap-6">
-                  
-                  <div className="relative z-10 shrink-0">
-                    <div className="w-12 h-12 md:w-14 md:h-14 bg-white border border-black/5 rounded-2xl flex items-center justify-center text-[#111111] shadow-sm group-hover:rotate-[360deg] transition-transform duration-700">
-                      <Lock size={22} />
-                    </div>
-                  </div>
-                  <div className="relative z-10 flex flex-col text-left flex-1">
-                    <h3 className="font-sora font-semibold text-lg md:text-xl text-[#111111] mb-1 tracking-tight">Privacy by Design</h3>
-                    <p className="text-[#6A6A73] font-inter leading-relaxed text-xs md:text-sm max-w-2xl">Your location data is end-to-end encrypted during the trip and automatically wiped from our active servers after every ride. We never sell your data.</p>
-                  </div>
-
-                  <div className="hidden md:flex shrink-0 items-center justify-center px-4 py-2 bg-[#00C853]/10 rounded-full border border-[#00C853]/20 text-[#00C853] gap-2">
-                     <div className="w-2 h-2 rounded-full bg-[#00C853] animate-pulse"></div>
-                     <span className="font-inter text-xs font-bold uppercase tracking-wider">End-to-End Encrypted</span>
-                  </div>
+                <div className="lg:hidden w-full s3-mobile-carousel opacity-0 mb-6">
+                  <CoverflowCarousel cards={safetyCards} />
                 </div>
 
               </div>
-
             </div>
           </div>
 
-          <div className="absolute inset-0 z-40 flex flex-col items-center justify-start pointer-events-none px-6 pt-[80px] md:pt-[100px] pb-10">
+          <div className="absolute inset-0 z-40 flex flex-col items-center justify-start pointer-events-none px-6 pt-[120px] md:pt-[100px] pb-10">
             
             <div className="w-full flex flex-col items-center text-center mb-4 md:mb-8 relative z-10 shrink-0">
               <h2 ref={s4Headline} className="text-4xl md:text-5xl lg:text-6xl font-sora font-bold tracking-tight opacity-0 leading-tight">

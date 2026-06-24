@@ -24,7 +24,6 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [lastScrollY]);
 
-  const navLinks = ['Home', 'About Us', 'Safety', 'Careers', 'Blog', 'Press', 'Contact Us'];
 
   return (
     <>
