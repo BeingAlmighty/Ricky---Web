@@ -31,7 +31,7 @@ export default function Features() {
     {
       title: "Trusted Drivers",
       desc: "All drivers go through a verification process to provide safe rides.",
-      image: "trustedCaptain.avif",
+      image: "trustedCaptain.jpeg",
       pill: "Verified",
     },
     {
