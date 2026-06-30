@@ -69,7 +69,7 @@ export default function Safety() {
     {
       id: 2,
       title: "Verified Identity",
-      desc: "Match the captain's biometrics and vehicle before stepping inside.",
+      desc: "Match the driver's biometrics and vehicle before stepping inside.",
       icon: UserCheck,
       bgClass: "bg-white",
       borderClass: "border-black/5",
@@ -280,7 +280,7 @@ export default function Safety() {
                 Trust begins<br/>before the ride.
               </h1>
               <p ref={s1Sub} className="mt-2 md:mt-4 text-sm md:text-base lg:text-lg text-text-secondary font-inter max-w-lg leading-relaxed">
-                Every Ricky captain goes through a strict verification and onboarding process before joining our network.
+                Every Ricky driver goes through a strict verification and onboarding process before joining our network.
               </p>
 
               <div ref={s1Card} className="w-full mt-4 md:mt-6 bg-white rounded-3xl p-5 md:p-8 shadow-[0px_20px_40px_rgba(0,0,0,0.04)] border border-primary/5 text-left flex flex-col md:flex-row items-center gap-6 md:gap-10">
@@ -306,7 +306,7 @@ export default function Safety() {
                   </div>
                   <div ref={stepAppr} className="flex items-center gap-3 md:gap-4 text-[#6A6A73] transition-colors relative z-10">
                     <div className="bg-white p-2 rounded-full border-2 border-current"><CheckCircle2 size={18} /></div>
-                    <span className="font-inter font-medium text-sm md:text-base">Captain Approval</span>
+                    <span className="font-inter font-medium text-sm md:text-base">Driver Approval</span>
                   </div>
                 </div>
 
@@ -321,7 +321,7 @@ export default function Safety() {
 
                   <div className="relative z-10 flex flex-col items-center justify-center w-full h-full">
                     <p ref={momentOfTrustText} className="text-base md:text-lg font-sora font-semibold text-[#111111] opacity-0 mb-4 md:mb-6 max-w-[200px] leading-snug">
-                      Only then does a captain receive the Ricky badge.
+                      Only then does a driver receive the Ricky badge.
                     </p>
                     <div ref={rickyBadge} className="bg-[#5B21B6] text-white p-4 md:p-5 rounded-2xl shadow-xl opacity-0 shrink-0 transform md:scale-110">
                       <ShieldCheck size={36} strokeWidth={1.5} />
@@ -365,14 +365,14 @@ export default function Safety() {
                   <div ref={s2ScreenNotif} className="absolute inset-0 flex items-center justify-center p-6 bg-black/5">
                     <div className="bg-white w-full p-4 rounded-xl shadow-lg border border-black/5 text-center">
                       <div className="font-sora font-semibold mb-1">Ride Request</div>
-                      <div className="text-sm text-[#6A6A73] font-inter">Looking for nearby captains...</div>
+                      <div className="text-sm text-[#6A6A73] font-inter">Looking for nearby drivers...</div>
                     </div>
                   </div>
 
                   <div ref={s2ScreenAssign} className="absolute inset-0 bg-white opacity-0 flex flex-col justify-between">
                     <div className="h-1/2 bg-gray-200"></div> 
                     <div className="p-6 h-1/2">
-                      <h3 className="font-sora font-bold text-xl mb-4">Captain Assigned</h3>
+                      <h3 className="font-sora font-bold text-xl mb-4">Driver Assigned</h3>
                       <div className="flex items-center gap-4 mb-4">
                         <div className="w-12 h-12 bg-gray-200 rounded-full"></div>
                         <div>
@@ -389,7 +389,7 @@ export default function Safety() {
                     </div>
                     <div className="p-6 h-1/2 bg-primary text-white">
                       <h3 className="font-sora font-bold text-xl mb-2">Arriving in 2 mins</h3>
-                      <div className="text-sm opacity-80 font-inter">Your captain is nearby</div>
+                      <div className="text-sm opacity-80 font-inter">Your driver is nearby</div>
                     </div>
                   </div>
 
@@ -410,7 +410,7 @@ export default function Safety() {
                     </div>
                     <h3 className="font-sora font-bold text-2xl mb-2">You have arrived</h3>
                     <div className="text-[#6A6A73] font-inter mb-8">Hope you had a safe journey!</div>
-                    <button className="w-full bg-[#111111] text-white py-4 rounded-xl font-inter font-semibold">Rate Captain</button>
+                    <button className="w-full bg-[#111111] text-white py-4 rounded-xl font-inter font-semibold">Rate Driver</button>
                   </div>
 
                 </div>
@@ -465,7 +465,7 @@ export default function Safety() {
                     </div>
                     <div className="relative z-10 flex flex-col text-left">
                       <h3 className="font-sora font-semibold text-xl text-[#111111] mb-1.5 tracking-tight">Verified Identity</h3>
-                      <p className="text-[#6A6A73] font-inter leading-relaxed text-sm">Match the captain's biometrics and vehicle before stepping inside.</p>
+                      <p className="text-[#6A6A73] font-inter leading-relaxed text-sm">Match the driver's biometrics and vehicle before stepping inside.</p>
                     </div>
                   </div>
 
@@ -556,7 +556,7 @@ export default function Safety() {
 
                 <g className="system-node opacity-0">
                   <circle cx="300" cy="100" r="8" fill="#FAFAFA" />
-                  <text x="300" y="80" fill="#FAFAFA" fontSize="14" textAnchor="middle" className="font-inter">Captain Verification</text>
+                  <text x="300" y="80" fill="#FAFAFA" fontSize="14" textAnchor="middle" className="font-inter">Driver Verification</text>
                 </g>
                 <g className="system-node opacity-0">
                   <circle cx="700" cy="100" r="8" fill="#FAFAFA" />

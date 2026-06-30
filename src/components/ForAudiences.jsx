@@ -3,12 +3,12 @@ import { CheckCircle2, ArrowRight } from 'lucide-react'
 export default function ForAudiences() {
   const riderBenefits = [
     'Convenient Booking: Request a ride directly from your phone in a few taps.',
-    'Live Tracking: Track your captain\'s arrival in real time.',
+    'Live Tracking: Track your driver\'s arrival in real time.',
     'Multiple Payment Options: Pay through UPI, cash, or wallets.',
     'Safety Features: Share trip details with family and friends.'
   ]
 
-  const captainBenefits = [
+  const driverBenefits = [
     'Earn More Locally: Get ride requests without roaming around.',
     'Flexible Working Hours: Drive whenever it suits your schedule.',
     'Reliable Daily Opportunities: Connect with local riders.',
@@ -47,12 +47,12 @@ export default function ForAudiences() {
         <div className="bg-dark text-white p-10 rounded-3xl premium-shadow relative overflow-hidden transition-card">
           <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl translate-x-1/3 -translate-y-1/3 pointer-events-none"></div>
 
-          <h2 className="text-3xl font-semibold mb-6 tracking-tight relative z-10">For Captains</h2>
+          <h2 className="text-3xl font-semibold mb-6 tracking-tight relative z-10">For Drivers</h2>
           <p className="text-gray-400 mb-8 font-inter relative z-10">
             Join Delhi's growing electric mobility ecosystem and earn more reliably.
           </p>
           <ul className="space-y-4 mb-10 relative z-10">
-            {captainBenefits.map((benefit, i) => {
+            {driverBenefits.map((benefit, i) => {
               const [title, desc] = benefit.split(':')
               return (
                 <li key={i} className="flex items-start gap-3">
@@ -66,7 +66,7 @@ export default function ForAudiences() {
             })}
           </ul>
           <button className="relative z-10 flex items-center justify-center gap-3 bg-white text-dark px-6 py-3 rounded-xl transition-all duration-300 font-inter font-medium hover:-translate-y-1 premium-shadow w-full sm:w-auto">
-            Become a Captain
+            Become a Driver
           </button>
         </div>
 

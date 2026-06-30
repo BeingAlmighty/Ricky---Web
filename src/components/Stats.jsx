@@ -7,7 +7,7 @@ export default function Stats() {
   const numbersRef = useRef([])
 
   const stats = [
-    { value: 500, suffix: '+', label: 'Captains' },
+    { value: 500, suffix: '+', label: 'Drivers' },
     { value: 50, suffix: '+', label: 'Service Areas' },
     { value: 4.8, suffix: '★', label: 'Average Rating', isFloat: true }
   ]

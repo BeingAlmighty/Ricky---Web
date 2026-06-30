@@ -7,7 +7,7 @@ export default function AppShowcase() {
 
   const screens = [
     { title: 'Enter Your Destination', desc: 'Open the app and choose exactly where you want to go. A clear, minimal interface designed for speed.', src: '/assets/screen2.png' },
-    { title: 'Get Matched Instantly', desc: "We'll immediately connect you with a nearby, highly-rated Ricky captain so you never have to wait.", src: '/assets/screen3.png' },
+    { title: 'Get Matched Instantly', desc: "We'll immediately connect you with a nearby, highly-rated Ricky driver so you never have to wait.", src: '/assets/screen3.png' },
     { title: 'Savings & Payments', desc: 'Apply promo codes instantly to get discounts on your rides. Enjoy seamless, hassle-free payments via UPI, wallet, or cash.', src: '/assets/screen4.png' },
     { title: 'Manage Your Profile', desc: 'Take full control of your experience. Access your complete trip history, manage saved addresses, track referrals, and customize settings effortlessly.', src: '/assets/screen5.png' },
   ]

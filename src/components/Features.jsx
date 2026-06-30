@@ -12,7 +12,7 @@ export default function Features() {
   const cards = [
     {
       title: "Doorstep Pickup",
-      desc: "No need to walk long distances. Your Ricky captain comes directly to your location.",
+      desc: "No need to walk long distances. Your Ricky driver comes directly to your location.",
       image: "homePickup.png",
       pill: "2-5 mins",
     },
@@ -29,8 +29,8 @@ export default function Features() {
       pill: "100% Electric",
     },
     {
-      title: "Trusted Captains",
-      desc: "All captains go through a verification process to provide safe rides.",
+      title: "Trusted Drivers",
+      desc: "All drivers go through a verification process to provide safe rides.",
       image: "trustedCaptain.avif",
       pill: "Verified",
     },

@@ -35,7 +35,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto flex items-center justify-between lg:justify-center w-full">
         
         <div className="lg:hidden flex items-center justify-between w-full">
-          <div className="text-xl font-bold font-sora text-[#5B21B6]">ricky</div>
+          <div className="text-xl font-bold font-sora text-[#5B21B6] tracking-tight">RICKY</div>
           <button onClick={() => setIsMobileMenuOpen(true)} className="p-2 -mr-2 text-[#111111] hover:text-[#5B21B6] transition-colors">
             <Menu size={28} />
           </button>
@@ -68,7 +68,7 @@ export default function Navbar() {
 
       <div className={`fixed inset-0 bg-[#FAFAFA] z-[200] flex flex-col px-6 py-8 transition-transform duration-500 ease-in-out ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'} lg:hidden`}>
         <div className="flex items-center justify-between mb-12">
-          <div className="text-2xl font-bold font-sora text-[#5B21B6]">ricky</div>
+          <div className="text-2xl font-bold font-sora text-[#5B21B6] tracking-tight">RICKY</div>
           <button onClick={() => setIsMobileMenuOpen(false)} className="p-2 -mr-2 text-[#111111] hover:text-[#5B21B6] transition-colors bg-white shadow-sm rounded-full">
             <X size={28} />
           </button>
